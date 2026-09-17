@@ -1,10 +1,12 @@
 import { withBase } from "@/lib/basePath";
 
 const img = {
-  h1: withBase("/header/67df78b253dcd31fbbfa42bbc6b64f8827a379ac.webp"),
-  h2: withBase("/header/cac1b571ab29be3d313f95cb75d07d752e75699b.webp"),
-  h3: withBase("/header/Rectangle%20632.webp"),
-  h4: withBase("/header/Rectangle%20634.webp"),
+  inj1: withBase("/header/Rectangle%20632.webp"),
+  inj2: withBase("/header/Rectangle%20634.webp"),
+  hw1: withBase("/header/secondtab-first.webp"),
+  hw2: withBase("/header/secondtab-second.webp"),
+  care1: withBase("/header/thirdtab-first.webp"),
+  care2: withBase("/header/thirdtab-second.webp"),
   s1: withBase("/hero-section/a3883001594f82540870a6bc0412fba03f0a4c33.webp"),
   s2: withBase("/hero-section/e51cd084c290e274f02ce275901ce2bd24c3f821.webp"),
   s3: withBase("/hero-section/63b4f2c9c876e7239955d6e29e2d7458728768eb.webp"),
@@ -49,7 +51,7 @@ export const COSMETOLOGY_MENU: MenuCategory[] = [
           title: "Биоревитализация",
           description:
             "Глубокое увлажнение и восстановление — кожа работает сама, изнутри",
-          image: img.h4,
+          image: img.inj2,
         },
       },
       {
@@ -59,7 +61,7 @@ export const COSMETOLOGY_MENU: MenuCategory[] = [
           title: "Мезотерапия",
           description:
             "Точечное питание кожи коктейлями под твои задачи и состояние",
-          image: img.h4,
+          image: img.inj2,
         },
       },
       {
@@ -69,7 +71,7 @@ export const COSMETOLOGY_MENU: MenuCategory[] = [
           title: "Контурная пластика",
           description:
             "Мягкая коррекция объёмов с сохранением твоих естественных линий",
-          image: img.h3,
+          image: img.inj1,
         },
       },
       {
@@ -117,17 +119,37 @@ export const COSMETOLOGY_MENU: MenuCategory[] = [
   {
     id: "hardware",
     label: "Аппаратная",
-    defaultItemId: "laser-face",
-    featuredIds: ["laser-face", "rf"],
+    defaultItemId: "diagnostics",
+    featuredIds: ["laser", "rf"],
     items: [
       {
-        id: "laser-face",
-        label: "Лазерное омоложение",
+        id: "diagnostics",
+        label: "Диагностика кожи",
         card: {
-          title: "Лазерное омоложение",
+          title: "Диагностика кожи",
           description:
-            "Мягкое обновление рельефа и тона без долгого восстановления",
-          image: img.h1,
+            "Точная оценка состояния кожи перед подбором процедур",
+          image: img.s5,
+        },
+      },
+      {
+        id: "photo",
+        label: "Фотоомоложение",
+        card: {
+          title: "Фотоомоложение",
+          description:
+            "Ровный тон, меньше пигмента и сосудистых проявлений",
+          image: img.s6,
+        },
+      },
+      {
+        id: "laser",
+        label: "Лазерные процедуры",
+        card: {
+          title: "Лазерные процедуры",
+          description:
+            "Точное воздействие на нужную зону без затрагивания окружающих тканей",
+          image: img.hw1,
         },
       },
       {
@@ -136,28 +158,48 @@ export const COSMETOLOGY_MENU: MenuCategory[] = [
         card: {
           title: "RF-лифтинг",
           description:
-            "Плотность и лифтинг за счёт прогрева глубоких слоёв кожи",
-          image: img.h2,
+            "Подтяжка кожи на глубоком уровне с сохранением естественных контуров тела",
+          image: img.hw2,
         },
       },
       {
-        id: "ultrasound",
-        label: "Ультразвуковой SMAS",
+        id: "smas",
+        label: "SMAS-лифтинг",
         card: {
-          title: "Ультразвуковой SMAS",
+          title: "SMAS-лифтинг",
           description:
             "Глубокий лифтинг каркаса лица с сохранением естественной мимики",
           image: img.s2,
         },
       },
       {
-        id: "photo",
-        label: "Фототерапия",
+        id: "ultrasound",
+        label: "Ультразвуковые процедуры",
         card: {
-          title: "Фототерапия",
+          title: "Ультразвуковые процедуры",
           description:
-            "Ровный тон, меньше пигмента и сосудистых проявлений",
-          image: img.s5,
+            "Мягкая работа с тканями на глубине без повреждения поверхности",
+          image: img.s3,
+        },
+      },
+      {
+        id: "em",
+        label: "Электромагнитные процедуры",
+        card: {
+          title: "Электромагнитные процедуры",
+          description:
+            "Стимуляция мышц и кожи для плотности и тонуса",
+          image: img.s4,
+        },
+      },
+      {
+        id: "hw-massage",
+        label: "Аппаратный массаж",
+        card: {
+          title: "Аппаратный массаж",
+          description:
+            "Лимфодренаж и моделирование контуров с комфортным воздействием",
+          image: img.s7,
         },
       },
     ],
@@ -166,16 +208,16 @@ export const COSMETOLOGY_MENU: MenuCategory[] = [
     id: "care",
     label: "Уходовая",
     defaultItemId: "cleaning",
-    featuredIds: ["cleaning", "peels"],
+    featuredIds: ["cleaning", "care-proc"],
     items: [
       {
         id: "cleaning",
-        label: "Чистка лица",
+        label: "Чистки",
         card: {
-          title: "Чистка лица",
+          title: "Чистки",
           description:
-            "Глубокое очищение пор и свежий тон без агрессии к коже",
-          image: img.s5,
+            "Глубокое очищение кожи без пересушивания и раздражения",
+          image: img.care1,
         },
       },
       {
@@ -185,27 +227,27 @@ export const COSMETOLOGY_MENU: MenuCategory[] = [
           title: "Пилинги",
           description:
             "Обновление поверхности кожи — сияние и более ровный рельеф",
-          image: img.h3,
+          image: img.s5,
         },
       },
       {
-        id: "care-ritual",
-        label: "Уходовые ритуалы",
+        id: "hydra",
+        label: "Hydra Facial",
         card: {
-          title: "Уходовые ритуалы",
+          title: "Hydra Facial",
           description:
-            "Индивидуальный уход под тип кожи — комфорт и видимый результат",
+            "Многоступенчатое очищение и увлажнение за одну процедуру",
           image: img.s1,
         },
       },
       {
-        id: "mask",
-        label: "Маски и сыворотки",
+        id: "care-proc",
+        label: "Уходовые процедуры",
         card: {
-          title: "Маски и сыворотки",
+          title: "Уходовые процедуры",
           description:
-            "Насыщение и восстановление барьера после процедур и в сезон",
-          image: img.s6,
+            "Подтяжка кожи на глубоком уровне с сохранением естественных контуров тела",
+          image: img.care2,
         },
       },
     ],
