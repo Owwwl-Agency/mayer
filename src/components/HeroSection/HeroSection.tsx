@@ -17,6 +17,7 @@ import {
   pctY,
   SATELLITE_IMAGES,
   SLIDER_CAPTIONS,
+  SLIDER_FOCAL,
   SLIDER_IMAGES,
   STAGE_GUTTER,
 } from "./hero-images";
@@ -25,13 +26,25 @@ import styles from "./hero.module.css";
 gsap.registerPlugin(ScrollTrigger);
 
 const SLIDE_INTERVAL_MS = 6800;
-/** Page-turn wipe — panels scale hard (images stay cover, no Ken Burns) */
-const SLIDE_DURATION = 1.3;
-const OUT_SHIFT = -26;
-const IN_SHIFT = 36;
-/** Aggressive panel motion: incoming “comes” from small; outgoing punches up */
-const OUT_PANEL_SCALE = 1.18;
-const IN_PANEL_SCALE = 0.78;
+/** Page-turn wipe — aggressive asymmetric scale (L/R differ) */
+const SLIDE_DURATION = 1.25;
+const OUT_SHIFT = -32;
+const IN_SHIFT = 42;
+/**
+ * Incoming arrives from the right: compressed harder on X than Y.
+ * Outgoing yields to the left: expands harder on X than Y.
+ */
+const IN_SCALE_X = 0.48;
+const IN_SCALE_Y = 0.7;
+const OUT_SCALE_X = 1.42;
+const OUT_SCALE_Y = 1.18;
+/** Image inside the panel — counter-zoom into place */
+const IN_MEDIA_SCALE = 1.45;
+const OUT_MEDIA_SCALE = 1.32;
+/** Incoming: soft paper overshoot, then long settle back */
+const IN_OVER_X = 1.16;
+const IN_OVER_Y = 1.09;
+const IN_OVER_MEDIA = 0.93;
 const IMAGE_RADIUS = CENTER_FRAME.radius;
 const SLIDE_COUNT = SLIDER_IMAGES.length;
 
@@ -86,6 +99,7 @@ export default function HeroSection() {
   const collageRef = useRef<HTMLDivElement>(null);
   const centerRef = useRef<HTMLDivElement>(null);
   const slideRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const slideZoomRefs = useRef<(HTMLDivElement | null)[]>([]);
   const progressRef = useRef<SVGCircleElement>(null);
   const dividerRef = useRef<HTMLDivElement>(null);
   const satelliteRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -120,8 +134,10 @@ export default function HeroSection() {
         autoAlpha: visible ? 1 : 0,
         zIndex: visible ? 2 : 0,
         clipPath: "inset(0 0% 0 0%)",
-        scale: 1,
+        scaleX: 1,
+        scaleY: 1,
         xPercent: 0,
+        rotateY: 0,
       });
       if (media) {
         gsap.set(media, { xPercent: 0, scale: 1 });
@@ -137,25 +153,31 @@ export default function HeroSection() {
     isSlidingRef.current = true;
     gsap.killTweensOf([fromEl, toEl, fromMedia, toMedia].filter(Boolean));
 
-    /* Current page stays under; next page peels in from the right */
+    /* Current page under; next peels in from the right with hard L/R scale */
     gsap.set(fromEl, {
       autoAlpha: 1,
       zIndex: 1,
       clipPath: "inset(0 0% 0 0%)",
-      scale: 1,
+      scaleX: 1,
+      scaleY: 1,
       xPercent: 0,
-      transformOrigin: "50% 50%",
+      rotateY: 0,
+      transformOrigin: "0% 50%",
+      transformPerspective: 1400,
     });
     gsap.set(toEl, {
       autoAlpha: 1,
       zIndex: 2,
       clipPath: "inset(0 0% 0 100%)",
-      scale: IN_PANEL_SCALE,
-      xPercent: IN_SHIFT * 0.15,
+      scaleX: IN_SCALE_X,
+      scaleY: IN_SCALE_Y,
+      xPercent: IN_SHIFT * 0.2,
+      rotateY: -28,
       transformOrigin: "100% 50%",
+      transformPerspective: 1400,
     });
     if (fromMedia) gsap.set(fromMedia, { xPercent: 0, scale: 1 });
-    if (toMedia) gsap.set(toMedia, { xPercent: 0, scale: 1 });
+    if (toMedia) gsap.set(toMedia, { xPercent: IN_SHIFT * 0.5, scale: IN_MEDIA_SCALE });
 
     const tl = gsap.timeline({
       defaults: { duration: SLIDE_DURATION, ease: "power3.inOut" },
@@ -168,57 +190,93 @@ export default function HeroSection() {
           autoAlpha: 1,
           zIndex: 2,
           clipPath: "inset(0 0% 0 0%)",
-          scale: 1,
+          scaleX: 1,
+          scaleY: 1,
           xPercent: 0,
+          rotateY: 0,
         });
         if (toMedia) gsap.set(toMedia, { xPercent: 0, scale: 1 });
         onDone?.();
       },
     });
 
-    /* Sharp edge moves right → left (like turning a page) */
+    /* Sharp edge moves right → left (page turn) */
     tl.to(
       toEl,
       { clipPath: "inset(0 0% 0 0%)", ease: "power3.inOut" },
       0,
     );
 
-    /* Incoming panel “comes” forward hard (scale up into place) */
+    /* Incoming: scale past a little, then paper-soft settle back */
+    const inTravel = SLIDE_DURATION * 0.52;
+    const inSettle = SLIDE_DURATION * 0.58;
     tl.to(
       toEl,
       {
-        scale: 1,
+        scaleX: IN_OVER_X,
+        scaleY: IN_OVER_Y,
         xPercent: 0,
+        rotateY: 0,
+        duration: inTravel,
         ease: "power3.out",
       },
       0,
     );
+    tl.to(
+      toEl,
+      {
+        scaleX: 1,
+        scaleY: 1,
+        duration: inSettle,
+        ease: "sine.out",
+      },
+      inTravel,
+    );
 
-    /* Previous panel punches up + drifts as it yields */
+    /* Outgoing: left-anchored — stretches wider on X as it yields */
     tl.to(
       fromEl,
       {
-        scale: OUT_PANEL_SCALE,
-        xPercent: OUT_SHIFT * 0.45,
+        scaleX: OUT_SCALE_X,
+        scaleY: OUT_SCALE_Y,
+        xPercent: OUT_SHIFT * 0.5,
+        rotateY: 16,
         ease: "power3.in",
       },
       0,
     );
 
-    /* Mild parallax shift on images only — no image scale */
+    /* Image counter-scale — lands into the frame */
     if (fromMedia) {
       tl.to(
         fromMedia,
-        { xPercent: OUT_SHIFT, ease: "power2.in" },
+        {
+          xPercent: OUT_SHIFT * 0.55,
+          scale: OUT_MEDIA_SCALE,
+          ease: "power2.in",
+        },
         0,
       );
     }
     if (toMedia) {
-      tl.fromTo(
+      tl.to(
         toMedia,
-        { xPercent: IN_SHIFT },
-        { xPercent: 0, ease: "power2.out" },
+        {
+          xPercent: 0,
+          scale: IN_OVER_MEDIA,
+          duration: inTravel,
+          ease: "power3.out",
+        },
         0,
+      );
+      tl.to(
+        toMedia,
+        {
+          scale: 1,
+          duration: inSettle,
+          ease: "sine.out",
+        },
+        inTravel,
       );
     }
   };
@@ -285,7 +343,7 @@ export default function HeroSection() {
         const endW = stageW - STAGE_GUTTER * 2;
         const endH = stageH - endT - endB;
 
-        /* Smooth from the first pixel of scroll (no flat “lag” at start) */
+        /* Smooth from the first pixel of scroll */
         const eased = gsap.parseEase("power1.inOut")(progress);
 
         const captionSize = gsap.utils.interpolate(
@@ -302,6 +360,12 @@ export default function HeroSection() {
           CENTER_ZOOM.dividerBottom + CENTER_ZOOM.pagerToDivider;
         const pagerBottom = gsap.utils.interpolate(36, pagerBottomEnd, eased);
 
+        const overlayAlpha = gsap.utils.interpolate(
+          CENTER_ZOOM.overlayStart,
+          CENTER_ZOOM.overlayEnd,
+          eased,
+        );
+
         gsap.set(center, {
           left: gsap.utils.interpolate(startL, endL, eased),
           top: gsap.utils.interpolate(startT, endT, eased),
@@ -313,6 +377,7 @@ export default function HeroSection() {
             eased,
           ),
           "--zoom": eased,
+          "--overlay-alpha": overlayAlpha,
           "--caption-size": `${captionSize}px`,
           "--caption-left": `${gsap.utils.interpolate(30, CENTER_ZOOM.insetInner, eased)}px`,
           "--caption-bottom": `${captionBottom}px`,
@@ -321,6 +386,44 @@ export default function HeroSection() {
           "--caption-pad-1": `${gsap.utils.interpolate(26, 34, eased)}px`,
           "--caption-pad-3": `${gsap.utils.interpolate(33, 43, eased)}px`,
         } as gsap.TweenVars);
+
+        /*
+          Depth = frame expand + camera pullback from each Figma focal point.
+          Scale opens from origin (top / bottom / center) so the subject stays
+          locked while more of the photo reveals — not a flat center zoom.
+        */
+        slideZoomRefs.current.forEach((el, index) => {
+          if (!el) return;
+          const focal = SLIDER_FOCAL[index] ?? SLIDER_FOCAL[2];
+          const scale = gsap.utils.interpolate(
+            focal.scaleStart,
+            focal.scaleEnd,
+            eased,
+          );
+          const posX = gsap.utils.interpolate(
+            focal.posXStart,
+            focal.posXEnd,
+            eased,
+          );
+          const posY = gsap.utils.interpolate(
+            focal.posYStart,
+            focal.posYEnd,
+            eased,
+          );
+
+          gsap.set(el, {
+            transformOrigin: focal.origin,
+            scale,
+            force3D: true,
+          });
+
+          const img = el.querySelector("img");
+          if (img) {
+            gsap.set(img, {
+              objectPosition: `${posX}% ${posY}%`,
+            });
+          }
+        });
 
         if (divider) {
           gsap.set(divider, {
@@ -364,7 +467,6 @@ export default function HeroSection() {
             ? Math.min(...candidates)
             : stageW * 0.6;
 
-          /* Same smooth ease as zoom; fly (1.1–1.8) = relative speed */
           const satEased = gsap.parseEase("power1.inOut")(
             Math.min(1, progress * (item.fly / 1.1)),
           );
@@ -389,6 +491,7 @@ export default function HeroSection() {
         scrub: 0.6,
         pin: stage,
         anticipatePin: 1,
+        fastScrollEnd: true,
         invalidateOnRefresh: true,
         onUpdate: (self) => {
           applyZoom(self.progress);
@@ -483,27 +586,44 @@ export default function HeroSection() {
             }}
           >
             <div className={styles.sliderViewport}>
-              {SLIDER_IMAGES.map((src, index) => (
-                <div
-                  key={src}
-                  ref={(el) => {
-                    slideRefs.current[index] = el;
-                  }}
-                  className={styles.slide}
-                >
-                  <div className={styles.slideMedia}>
-                    <Image
-                      src={src}
-                      alt=""
-                      fill
-                      sizes="100vw"
-                      className={styles.imageCover}
-                      priority={index === 0}
-                    />
+              {SLIDER_IMAGES.map((src, index) => {
+                const focal = SLIDER_FOCAL[index] ?? SLIDER_FOCAL[2];
+                return (
+                  <div
+                    key={src}
+                    ref={(el) => {
+                      slideRefs.current[index] = el;
+                    }}
+                    className={styles.slide}
+                  >
+                    <div className={styles.slideMedia}>
+                      <div
+                        ref={(el) => {
+                          slideZoomRefs.current[index] = el;
+                        }}
+                        className={styles.slideZoom}
+                        style={{
+                          transformOrigin: focal.origin,
+                          transform: `scale(${focal.scaleStart})`,
+                        }}
+                      >
+                        <Image
+                          src={src}
+                          alt=""
+                          fill
+                          sizes="100vw"
+                          className={styles.imageCover}
+                          style={{
+                            objectPosition: `${focal.posXStart}% ${focal.posYStart}%`,
+                          }}
+                          priority={index === 0}
+                        />
+                      </div>
+                    </div>
+                    <div className={styles.slideOverlay} />
                   </div>
-                  <div className={styles.slideOverlay} />
-                </div>
-              ))}
+                );
+              })}
 
               <div className={styles.caption}>
                 <StaggerLine

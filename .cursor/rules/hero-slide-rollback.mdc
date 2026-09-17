@@ -1,0 +1,39 @@
+---
+description: Hero slider rollback checkpoint — restore this stage when user says rollback
+globs: src/components/HeroSection/**
+alwaysApply: true
+---
+
+# Hero slide rollback checkpoint
+
+When the user says **rollback** / **roleback** (for the hero slide transition), restore this exact stage. Do not invent a different earlier version.
+
+## Locked constants (`HeroSection.tsx`)
+
+```ts
+const SLIDE_DURATION = 1.25;
+const OUT_SHIFT = -32;
+const IN_SHIFT = 42;
+const IN_SCALE_X = 0.48;
+const IN_SCALE_Y = 0.7;
+const OUT_SCALE_X = 1.42;
+const OUT_SCALE_Y = 1.18;
+const IN_MEDIA_SCALE = 1.45;
+const OUT_MEDIA_SCALE = 1.32;
+```
+
+## Locked behavior
+
+- Asymmetric L/R page-turn wipe via `clipPath: inset(...)`
+- Incoming: start `IN_SCALE_*`, `rotateY: -28`, origin `100% 50%` → settle to 1 / 0
+- Outgoing: stretch to `OUT_SCALE_*`, `rotateY: 16`, origin `0% 50%`
+- Media counter-scale with `IN_MEDIA_SCALE` / `OUT_MEDIA_SCALE`
+- Slide CSS: `preserve-3d`, `will-change: clip-path, transform`
+- Keep scroll pin + `slideZoom` / `SLIDER_FOCAL` / slider assets intact
+
+## Do not restore (rejected experiments)
+
+- Places continuous neighbor-scale transforms
+- Rubber-band-only X scale with gaps
+- CSS sticky instead of GSAP pin
+- Lenis lerp experiments that broke the hero

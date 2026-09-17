@@ -15,18 +15,55 @@ export const HERO_IMAGES = {
   rightBottom: withBase("/hero-section/04606df5123b40c8751779f6ed8c69aec4c3f461.webp"),
 } as const;
 
+/** Center slider — final art direction (`public/hero-section/slider`) */
+export const SLIDER_IMAGES = [
+  withBase("/hero-section/slider/slide-1.webp"),
+  withBase("/hero-section/slider/slide-2.webp"),
+  withBase("/hero-section/slider/slide-3.webp"),
+] as const;
+
+/**
+ * Figma slider framing — left = small frame (start), right = expanded (end).
+ * Cover crop locked by object-position %; reveal opens from `origin`.
+ */
+export const SLIDER_FOCAL = [
+  {
+    /* slide 1 — top center */
+    posXStart: 50,
+    posYStart: 8,
+    posXEnd: 50,
+    posYEnd: 22,
+    origin: "50% 12%",
+    scaleStart: 1.42,
+    scaleEnd: 1,
+  },
+  {
+    /* slide 2 — bottom center */
+    posXStart: 46,
+    posYStart: 88,
+    posXEnd: 42,
+    posYEnd: 72,
+    origin: "50% 90%",
+    scaleStart: 1.42,
+    scaleEnd: 1,
+  },
+  {
+    /* slide 3 — center center */
+    posXStart: 50,
+    posYStart: 42,
+    posXEnd: 50,
+    posYEnd: 48,
+    origin: "50% 45%",
+    scaleStart: 1.36,
+    scaleEnd: 1,
+  },
+] as const;
+
 /** All hero assets to wait for before revealing the page */
 export const PRELOAD_ASSETS = [
   ...Object.values(HERO_IMAGES),
+  ...SLIDER_IMAGES,
   withBase("/logo.svg"),
-] as const;
-
-export const SLIDER_IMAGES = [
-  HERO_IMAGES.center,
-  HERO_IMAGES.rightTop,
-  HERO_IMAGES.buttom,
-  // HERO_IMAGES.rect633,
-  // HERO_IMAGES.rect639,
 ] as const;
 
 /** Per-slide caption lines (italic / light / offset) */
@@ -137,6 +174,13 @@ export const CENTER_ZOOM = {
   /** space between pager bottom edge and divider */
   pagerToDivider: 52,
   pagerSize: 60,
+  /**
+   * Fallback scale if a slide omits its own — prefer SLIDER_FOCAL.*.scale*
+   */
+  imageScaleStart: 1.4,
+  imageScaleEnd: 1,
+  overlayStart: 0.38,
+  overlayEnd: 0.26,
 } as const;
 
 /** Fixed L/R page gutter (Figma Zoom_01 + mega menu) */

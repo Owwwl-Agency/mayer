@@ -58,6 +58,7 @@
 
 .imageCover {
   object-fit: cover;
+  object-position: var(--object-pos, 50% 50%);
 }
 
 /* Figma crop: oversized image + negative left (27:15 / 27:16) */
@@ -74,6 +75,7 @@
   overflow: hidden;
   will-change: transform;
   --zoom: 0;
+  --overlay-alpha: 0.42;
   --caption-size: 26px;
   --caption-left: 30px;
   --caption-bottom: 30px;
@@ -99,6 +101,8 @@
   opacity: 0;
   will-change: clip-path, transform;
   transform-origin: center center;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
 }
 
 .slide:first-child {
@@ -108,12 +112,18 @@
 }
 
 .slideMedia {
+  /* Exact frame fill — oversized bleed was breaking Figma cover crops */
   position: absolute;
-  top: -6%;
-  left: -14%;
-  width: 128%;
-  height: 112%;
+  inset: 0;
   transform-origin: center center;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+/* Camera pullback from per-slide focal origin */
+.slideZoom {
+  position: absolute;
+  inset: 0;
   will-change: transform;
   backface-visibility: hidden;
 }
@@ -125,9 +135,10 @@
   z-index: 1;
   background: linear-gradient(
     to top,
-    rgb(0 0 0 / 30%) 0%,
-    transparent 45%
+    rgb(0 0 0 / var(--overlay-alpha, 0.42)) 0%,
+    transparent 48%
   );
+  transition: none;
 }
 
 .caption {
