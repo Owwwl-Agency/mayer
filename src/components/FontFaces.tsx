@@ -18,6 +18,13 @@ export default function FontFaces() {
   font-display: swap;
 }
 @font-face {
+  font-family: "CoFo Sans Pro Hebrew Trial";
+  src: url("${withBase("/fonts/CoFoSansProHebrewTrial-Book.otf")}") format("opentype");
+  font-weight: 450;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
   font-family: "Moisette";
   src: url("${withBase("/fonts/Moisette-Italic.otf")}") format("opentype");
   font-weight: 400;
@@ -35,6 +42,13 @@ export default function FontFaces() {
   font-family: "CoFo Holz Trial";
   src: url("${withBase("/fonts/CoFoHolzTrial-Regular.otf")}") format("opentype");
   font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "CoFo Holz Trial";
+  src: url("${withBase("/fonts/CoFoHolzTrial-Medium.otf")}") format("opentype");
+  font-weight: 500;
   font-style: normal;
   font-display: swap;
 }

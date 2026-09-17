@@ -13,6 +13,8 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
+  box-sizing: border-box;
+  /* Figma header chrome — 75px; mega/hero use --page-gutter (50px) */
   padding-inline: 75px;
   padding-top: 15px;
 }
@@ -86,6 +88,8 @@
   height: 100%;
   align-items: center;
   gap: 10px;
+  margin: 0;
+  border: 0;
   border-radius: 3px;
   padding-inline: 10px;
   font-family: "CoFo Sans Pro Hebrew Trial", "CoFo Sans Pro", var(--font-manrope),
@@ -97,6 +101,9 @@
   text-decoration: none;
   white-space: nowrap;
   background: transparent;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
   transition:
     background-color 0.35s ease,
     color 0.35s ease;
@@ -104,7 +111,7 @@
 
 .navLink:hover,
 .navLinkActive {
-  background: #e5dace;
+  background: #f4f2f1;
   color: #202020;
 }
 
@@ -114,17 +121,15 @@
   flex-shrink: 0;
   color: currentColor;
   transform: rotate(0deg);
-  transition: transform 0.35s ease, color 0.35s ease;
+  transition:
+    transform 0.35s ease,
+    color 0.35s ease;
 }
 
 .navLink:hover .chevron,
-.navLinkActive:hover .chevron {
-  color: #202020;
-  transform: rotate(180deg);
-}
-
 .navLinkActive .chevron {
   color: #202020;
+  transform: rotate(180deg);
 }
 
 .actions {
@@ -219,5 +224,368 @@
 @media (max-width: 1100px) {
   .inner {
     padding-inline: 24px;
+  }
+}
+
+/* —— Cosmetology mega menu —— */
+.mega {
+  pointer-events: none;
+  position: absolute;
+  top: 91px;
+  left: var(--page-gutter, 50px);
+  right: var(--page-gutter, 50px);
+  z-index: 40;
+  visibility: hidden;
+}
+
+.megaOpen {
+  pointer-events: auto;
+  visibility: visible;
+}
+
+.megaPanel {
+  position: relative;
+  overflow: hidden;
+  border-radius: 5px 5px 0 0;
+  padding: 25px;
+  background-color: rgb(32 32 32 / 55%);
+  box-shadow: 0 4px 15px 0 rgb(244 242 241 / 7%);
+  -webkit-backdrop-filter: blur(35px) saturate(1.2);
+  backdrop-filter: blur(35px) saturate(1.2);
+}
+
+.megaGrid {
+  display: flex;
+  align-items: stretch;
+  min-height: 312px;
+}
+
+.megaCats {
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  padding-left: 45px;
+  padding-top: 35px;
+  min-width: 200px;
+}
+
+.catStack {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.catHighlight {
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  z-index: 0;
+  height: 37px;
+  border-radius: 5px;
+  background: #f4f2f1;
+  border: 1px solid #2020201a;
+  pointer-events: none;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.megaDivider {
+  flex-shrink: 0;
+  width: 1px;
+  /* 70px total gap between column content (line centered in the gap) */
+  margin-inline: calc((70px - 1px) / 2);
+  align-self: stretch;
+  background: #f4f2f10a;
+}
+
+.megaList {
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  width: max-content;
+  max-width: 280px;
+  margin: 0;
+  padding: 25px 0 0;
+  list-style: none;
+  overflow: visible;
+  gap: 18px;
+  animation: listReveal 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.megaList li {
+  border: 0;
+  animation: listItemIn 0.42s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.megaList li:nth-child(1) {
+  animation-delay: 0.02s;
+}
+.megaList li:nth-child(2) {
+  animation-delay: 0.06s;
+}
+.megaList li:nth-child(3) {
+  animation-delay: 0.1s;
+}
+.megaList li:nth-child(4) {
+  animation-delay: 0.14s;
+}
+.megaList li:nth-child(5) {
+  animation-delay: 0.18s;
+}
+.megaList li:nth-child(6) {
+  animation-delay: 0.22s;
+}
+.megaList li:nth-child(7) {
+  animation-delay: 0.26s;
+}
+
+.subLink {
+  position: relative;
+  display: flex;
+  width: max-content;
+  max-width: 100%;
+  align-items: center;
+  margin: 0;
+  border: 0;
+  padding: 0;
+  font-family: "CoFo Sans Pro Hebrew Trial", var(--font-cofo);
+  font-size: 16px;
+  line-height: 16px;
+  font-weight: 500;
+  letter-spacing: 0;
+  color: #f4f2f1;
+  opacity: 0.65;
+  background: transparent;
+  cursor: pointer;
+  appearance: none;
+  text-align: left;
+  transition:
+    padding-left 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.35s ease,
+    color 0.35s ease;
+}
+
+.subLink:hover,
+.subLinkActive {
+  /* 5px circle + 7px gap — text shifts right, circle sits where text started */
+  padding-left: 12px;
+  color: #f4f2f1;
+  opacity: 1;
+}
+
+.subBullet {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #f4f2f1;
+  opacity: 0;
+  transform: translateY(-50%) scale(0.4);
+  pointer-events: none;
+  transition:
+    opacity 0.3s ease,
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.subLinkActive .subBullet,
+.subLink:hover .subBullet {
+  opacity: 1;
+  transform: translateY(-50%) scale(1);
+}
+
+.megaCards {
+  display: flex;
+  flex-shrink: 0;
+  gap: 5px;
+  margin-left: auto;
+  padding: 0;
+  animation: cardsFade 0.32s ease;
+}
+
+.catBtn {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  margin: 0;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  padding: 0 7px 0 12px;
+  height: 37px;
+  font-family: "CoFo Sans Pro Hebrew Trial", var(--font-cofo);
+  font-size: 16px;
+  font-weight: 450;
+  letter-spacing: 0;
+  color: #f4f2f1;
+  background: transparent;
+  cursor: pointer;
+  appearance: none;
+  text-align: left;
+  transition: color 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.catBtn:hover:not(.catBtnActive) {
+  color: rgb(244 242 241 / 85%);
+}
+
+.catBtnActive {
+  color: #202020;
+}
+
+.catArrow {
+  display: inline-flex;
+  flex-shrink: 0;
+  width: 20.6px;
+  height: 20.6px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  background: transparent;
+  color: currentColor;
+  opacity: 0.85;
+  transition:
+    background-color 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    color 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.35s ease,
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.catArrow svg {
+  width: 11px;
+  height: 14.5px;
+}
+
+.catArrowActive {
+  background: #202020;
+  color: #f4f2f1;
+  opacity: 1;
+  transform: translateX(1px);
+}
+
+.featureCard {
+  position: relative;
+  display: block;
+  flex: 0 0 310px;
+  width: 310px;
+  height: 312px;
+  overflow: hidden;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #f4f2f1;
+}
+
+.featureMedia {
+  position: absolute;
+  inset: 0;
+}
+
+.featureImage {
+  object-fit: cover;
+}
+
+.featureScrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    323.56deg,
+    rgba(32, 32, 32, 0.39) 22.61%,
+    rgba(240, 235, 231, 0) 64.39%
+  );
+}
+
+.featureCopy {
+  position: absolute;
+  left: 15px;
+  right: 15px;
+  bottom: 20px;
+  z-index: 1;
+}
+
+.featureTitle {
+  margin: 0;
+  font-family: "CoFo Holz Trial", var(--font-holz);
+  font-size: 18px;
+  font-weight: 500;
+  font-style: normal;
+  line-height: 22px;
+  letter-spacing: 0;
+  color: #f4f2f1;
+}
+
+.featureRule {
+  width: 100%;
+  height: 1px;
+  margin: 8px 0 7px;
+  background: #f4f2f159;
+}
+
+.featureDesc {
+  margin: 0;
+  max-width: 270px;
+  font-family: "CoFo Sans Pro Hebrew Trial", var(--font-cofo);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0;
+  color: #f4f2f1;
+}
+
+@keyframes cardsFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes listReveal {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes listItemIn {
+  from {
+    opacity: 0;
+    transform: translateX(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 1280px) {
+  .mega {
+    left: 24px;
+    right: 24px;
+  }
+
+  .megaCats {
+    flex-basis: 200px;
+  }
+
+  .megaDivider {
+    margin-inline: 24px;
+  }
+
+  .featureCard {
+    flex-basis: 260px;
+    width: 260px;
+    height: 262px;
+  }
+}
+
+@media (max-width: 980px) {
+  .mega {
+    display: none;
   }
 }

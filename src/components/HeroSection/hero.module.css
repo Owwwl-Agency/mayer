@@ -97,7 +97,8 @@
   overflow: hidden;
   visibility: hidden;
   opacity: 0;
-  will-change: clip-path;
+  will-change: clip-path, transform;
+  transform-origin: center center;
 }
 
 .slide:first-child {
@@ -109,8 +110,8 @@
 .slideMedia {
   position: absolute;
   top: -6%;
-  left: -12%;
-  width: 124%;
+  left: -14%;
+  width: 128%;
   height: 112%;
   transform-origin: center center;
   will-change: transform;
@@ -233,12 +234,10 @@
 }
 
 .pagerProgress {
-  transform-origin: 30px 30px;
-  will-change: transform;
+  fill: none;
 }
 
-/* Figma 27:28 — Salina Trial Book 25px @ left 13 / top 13 inside 60×60
-   (circle SVG untouched) */
+/* Figma 27:28 — Salina Trial Book 25px @ left 13 / top 13 inside 60×60 */
 .pagerText {
   position: absolute;
   left: 12px;

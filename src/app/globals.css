@@ -6,6 +6,8 @@
   --background: #f4f2f1;
   --foreground: #202020;
   --header-height: 91px;
+  /* Mega menu + hero outer edges (header logo/CTA use 75px) */
+  --page-gutter: 50px;
   --cream: #e5dace;
   --sand: #b48b64;
   --font-cofo: "CoFo Sans Pro Hebrew Trial", "CoFo Sans Pro", var(--font-manrope),

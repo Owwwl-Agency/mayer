@@ -7,12 +7,12 @@ export const DESIGN_H = 750;
 
 export const HERO_IMAGES = {
   center: withBase("/hero-section/a3883001594f82540870a6bc0412fba03f0a4c33.webp"),
-  rect633: withBase("/hero-section/e51cd084c290e274f02ce275901ce2bd24c3f821.webp"),
-  rect634: withBase("/hero-section/f578429f15775fefbebff207f3a7ae4d27293055.webp"),
-  rect639: withBase("/hero-section/64a8b3bf24cc872deeda2844244161c8610e18b6.webp"),
-  rect638: withBase("/hero-section/63b4f2c9c876e7239955d6e29e2d7458728768eb.webp"),
-  rect640: withBase("/hero-section/3f84cf35ab8714ab44846efc32f6c9309e15a252.webp"),
-  rect637: withBase("/hero-section/04606df5123b40c8751779f6ed8c69aec4c3f461.webp"),
+  topLeft: withBase("/hero-section/e51cd084c290e274f02ce275901ce2bd24c3f821.webp"),
+  left: withBase("/hero-section/f578429f15775fefbebff207f3a7ae4d27293055.webp"),
+  top: withBase("/hero-section/64a8b3bf24cc872deeda2844244161c8610e18b6.webp"),
+  rightTop: withBase("/hero-section/63b4f2c9c876e7239955d6e29e2d7458728768eb.webp"),
+  buttom: withBase("/hero-section/3f84cf35ab8714ab44846efc32f6c9309e15a252.webp"),
+  rightBottom: withBase("/hero-section/04606df5123b40c8751779f6ed8c69aec4c3f461.webp"),
 } as const;
 
 /** All hero assets to wait for before revealing the page */
@@ -23,8 +23,8 @@ export const PRELOAD_ASSETS = [
 
 export const SLIDER_IMAGES = [
   HERO_IMAGES.center,
-  HERO_IMAGES.rect638,
-  HERO_IMAGES.rect640,
+  HERO_IMAGES.rightTop,
+  HERO_IMAGES.buttom,
   // HERO_IMAGES.rect633,
   // HERO_IMAGES.rect639,
 ] as const;
@@ -48,64 +48,65 @@ export const SLIDER_CAPTIONS = [
   },
 ] as const;
 
-/** Satellite tiles — Zoom_01 nodes 27:12–27:17. `fly` = scroll exit speed.
+/** Satellite tiles — Zoom_01 nodes 27:12–27:17.
+ *  `fly` = exit speed in 1.1–1.8 (higher = leaves sooner).
  *  `crop` = Figma image inset (absolute % inside overflow frame). */
 export const SATELLITE_IMAGES = [
   {
     id: "rect633",
-    src: HERO_IMAGES.rect633,
+    src: HERO_IMAGES.topLeft,
     x: 237,
     y: -19,
     w: 274,
     h: 298,
-    fly: 2,
+    fly: 0.81,
   },
   {
     id: "rect639",
-    src: HERO_IMAGES.rect639,
+    src: HERO_IMAGES.top,
     x: 521,
     y: 91,
     w: 234,
     h: 188,
-    fly: 1.8,
+    fly: 0.87,
   },
   {
     id: "rect638",
-    src: HERO_IMAGES.rect638,
+    src: HERO_IMAGES.rightTop,
     x: 1061,
     y: 31,
     w: 329,
     h: 313,
-    fly: 1.7,
+    fly: 0.95,
     /** Figma 27:16 — image shifted in frame */
     crop: { left: "-48.45%", width: "196.91%", top: "0%", height: "100%" },
   },
   {
     id: "rect634",
-    src: HERO_IMAGES.rect634,
+    src: HERO_IMAGES.left,
     x: 50,
     y: 289,
     w: 329,
     h: 180,
-    fly: 1.5,
+    fly: 1.005,
   },
   {
     id: "rect640",
-    src: HERO_IMAGES.rect640,
+    src: HERO_IMAGES.buttom,
     x: 730,
     y: 630,
     w: 321,
     h: 180,
-    fly: 1.1,
+    fly: 0.7,
   },
   {
     id: "rect637",
-    src: HERO_IMAGES.rect637,
+    src: HERO_IMAGES.rightBottom,
     x: 1061,
     y: 354,
     w: 272,
     h: 337,
-    fly: 1.5,
+    fly: 0.97,
     /** Figma 27:15 — image shifted in frame (was wrong with object-cover) */
     crop: { left: "-52.78%", width: "220.26%", top: "0%", height: "100%" },
   },
@@ -138,8 +139,28 @@ export const CENTER_ZOOM = {
   pagerSize: 60,
 } as const;
 
+/** Fixed L/R page gutter (Figma Zoom_01 + mega menu) */
+export const STAGE_GUTTER = 50;
+
+/** Design width between outer card edges (x=50 … x=1390) */
+const DESIGN_INNER = DESIGN_W - STAGE_GUTTER * 2;
+
+/** Figma X → screen X; outer cards stay at exactly 50px; inner gaps scale together */
+export function layoutX(x: number, viewportW: number) {
+  return (
+    STAGE_GUTTER +
+    ((x - STAGE_GUTTER) / DESIGN_INNER) * (viewportW - STAGE_GUTTER * 2)
+  );
+}
+
+export function layoutWidth(w: number, viewportW: number) {
+  return (w / DESIGN_INNER) * (viewportW - STAGE_GUTTER * 2);
+}
+
+/** CSS fallbacks — same 50px lock before GSAP */
 export function pctX(x: number) {
-  return `${(x / DESIGN_W) * 100}%`;
+  const t = (x - STAGE_GUTTER) / DESIGN_INNER;
+  return `calc(${STAGE_GUTTER}px + (100% - ${STAGE_GUTTER * 2}px) * ${t})`;
 }
 
 export function pctY(y: number) {
@@ -147,7 +168,7 @@ export function pctY(y: number) {
 }
 
 export function pctW(w: number) {
-  return `${(w / DESIGN_W) * 100}%`;
+  return `calc((100% - ${STAGE_GUTTER * 2}px) * ${w / DESIGN_INNER})`;
 }
 
 export function pctH(h: number) {
