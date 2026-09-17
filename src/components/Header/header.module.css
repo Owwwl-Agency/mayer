@@ -77,7 +77,8 @@
 }
 
 .navItem {
-  height: 100%;
+  height: calc(100% + 1px);
+  padding-top: 0.5px;
 }
 
 .navLink {
