@@ -1,0 +1,222 @@
+.header {
+  pointer-events: none;
+  position: fixed;
+  inset-inline: 0;
+  top: 0;
+  z-index: 50;
+}
+
+.inner {
+  pointer-events: auto;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding-inline: 75px;
+  padding-top: 15px;
+}
+
+.logo {
+  position: relative;
+  z-index: 10;
+  flex-shrink: 0;
+}
+
+.logoImage {
+  height: 61px;
+  width: auto;
+}
+
+/* Frosted glass — blur on ::before so it samples the page behind */
+.glass {
+  position: relative;
+  background: transparent !important;
+}
+
+.glass::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  background-color: rgb(32 32 32 / 55%);
+  -webkit-backdrop-filter: blur(16px) saturate(1.35);
+  backdrop-filter: blur(16px) saturate(1.35);
+  pointer-events: none;
+}
+
+.glass > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Figma 27:59 — glass menu bar */
+.nav {
+  position: absolute;
+  top: 25px;
+  left: 0;
+  right: 0;
+  z-index: 5;
+  display: flex;
+  width: fit-content;
+  height: 41px;
+  margin-inline: auto;
+  align-items: center;
+  border-radius: 3px;
+  padding: 2px;
+}
+
+.navList {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.navItem {
+  height: 100%;
+}
+
+.navLink {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  gap: 10px;
+  border-radius: 3px;
+  padding-inline: 10px;
+  font-family: "CoFo Sans Pro Hebrew Trial", "CoFo Sans Pro", var(--font-manrope),
+    sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+  color: #f4f2f1;
+  text-decoration: none;
+  white-space: nowrap;
+  background: transparent;
+  transition:
+    background-color 0.35s ease,
+    color 0.35s ease;
+}
+
+.navLink:hover,
+.navLinkActive {
+  background: #e5dace;
+  color: #202020;
+}
+
+.chevron {
+  width: 9px;
+  height: auto;
+  flex-shrink: 0;
+  color: currentColor;
+  transform: rotate(0deg);
+  transition: transform 0.35s ease, color 0.35s ease;
+}
+
+.navLink:hover .chevron,
+.navLinkActive:hover .chevron {
+  color: #202020;
+  transform: rotate(180deg);
+}
+
+.navLinkActive .chevron {
+  color: #202020;
+}
+
+.actions {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 5px;
+  margin-left: auto;
+}
+
+/* Figma 27:34 — glass CTA 177×41 */
+.cta {
+  display: none;
+  height: 41px;
+  width: 177px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  border-radius: 3px;
+  padding: 0 12px;
+  font-family: "CoFo Sans Pro Hebrew Trial", "CoFo Sans Pro", var(--font-manrope),
+    sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+  color: #f4f2f1;
+  text-decoration: none;
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (min-width: 640px) {
+  .cta {
+    display: inline-flex;
+  }
+}
+
+.ctaArrow {
+  flex-shrink: 0;
+  width: 9.92px;
+  height: auto;
+  color: #f4f2f1;
+}
+
+/* Figma 27:50 — glass toggle 41×41 */
+.menuButton {
+  box-sizing: border-box;
+  display: flex;
+  flex-shrink: 0;
+  width: 41px;
+  height: 41px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 3px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.menuLines {
+  display: flex;
+  width: 16px;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 3.5px;
+}
+
+.menuLines span {
+  display: block;
+  height: 1.5px;
+  border-radius: 1px;
+  background: #f4f2f1;
+}
+
+.menuLines span:nth-child(1) {
+  width: 42%;
+}
+
+.menuLines span:nth-child(2) {
+  width: 100%;
+}
+
+.menuLines span:nth-child(3) {
+  width: 68%;
+}
+
+@media (max-width: 1100px) {
+  .inner {
+    padding-inline: 24px;
+  }
+}

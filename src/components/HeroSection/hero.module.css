@@ -1,0 +1,272 @@
+.section {
+  position: relative;
+  height: 480vh;
+  background: #f4f2f1;
+}
+
+.stage {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: #f4f2f1;
+}
+
+.bgLayer1,
+.bgRadial {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+}
+
+/* Main Background — solid #F4F2F1 */
+.bgLayer1 {
+  z-index: 0;
+  background: #f4f2f1;
+}
+
+/*
+  Background Overlay — layer opacity 50%
+  Radial: #B48B64 @ 60% → #F4F2F1
+  (center shifted down like Figma matrix … 732 528)
+*/
+.bgRadial {
+  z-index: 1;
+  opacity: 0.5;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 1440 750' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none'%3E%3Crect width='1440' height='750' fill='url(%23g)'/%3E%3Cdefs%3E%3CradialGradient id='g' gradientUnits='userSpaceOnUse' cx='0' cy='0' r='10' gradientTransform='matrix(-8.8 -60.35 133.39 -19.451 732 528)'%3E%3Cstop stop-color='rgba(180,139,100,0.6)' offset='0'/%3E%3Cstop stop-color='%23F4F2F1' offset='1'/%3E%3C/radialGradient%3E%3C/defs%3E%3C/svg%3E");
+}
+
+.collage {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+}
+
+.satellite {
+  position: absolute;
+  z-index: 10;
+  overflow: hidden;
+  will-change: transform;
+}
+
+.satelliteRight {
+  z-index: 12;
+}
+
+.imageCover {
+  object-fit: cover;
+}
+
+/* Figma crop: oversized image + negative left (27:15 / 27:16) */
+.imageCropped {
+  position: absolute;
+  max-width: none;
+  pointer-events: none;
+  user-select: none;
+}
+
+.center {
+  position: absolute;
+  z-index: 20;
+  overflow: hidden;
+  will-change: transform;
+  --zoom: 0;
+  --caption-size: 26px;
+  --caption-left: 30px;
+  --caption-bottom: 30px;
+  --pager-right: 30px;
+  --pager-bottom: 36px;
+  --caption-pad-1: 26px;
+  --caption-pad-3: 33px;
+}
+
+.sliderViewport {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  visibility: hidden;
+  opacity: 0;
+  will-change: clip-path;
+}
+
+.slide:first-child {
+  z-index: 2;
+  visibility: visible;
+  opacity: 1;
+}
+
+.slideMedia {
+  position: absolute;
+  top: -6%;
+  left: -12%;
+  width: 124%;
+  height: 112%;
+  transform-origin: center center;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+.slideOverlay {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    to top,
+    rgb(0 0 0 / 30%) 0%,
+    transparent 45%
+  );
+}
+
+.caption {
+  pointer-events: none;
+  position: absolute;
+  bottom: var(--caption-bottom);
+  left: var(--caption-left);
+  z-index: 5;
+  color: #e5dace;
+}
+
+.captionLine {
+  margin: 0;
+  font-size: var(--caption-size);
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.letterMask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+
+.letter {
+  display: inline-block;
+  animation: captionLetterIn 0.48s cubic-bezier(0.215, 0.61, 0.355, 1) both;
+}
+
+@keyframes captionLetterIn {
+  from {
+    transform: translateY(110%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* Figma 27:21 — Moisette Italic */
+.captionItalic {
+  font-family: var(--font-moisette);
+  font-weight: 400;
+  font-style: italic;
+  padding-left: var(--caption-pad-1);
+}
+
+/* Figma 27:23 — CoFo Holz Trial Regular */
+.captionLight {
+  margin-top: 2px;
+  font-family: var(--font-holz);
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Figma 27:22 — Moisette Light */
+.captionOffset {
+  margin-top: 2px;
+  font-family: var(--font-moisette);
+  font-weight: 300;
+  font-style: normal;
+  padding-left: var(--caption-pad-3);
+}
+
+/* Figma 27:80 divider — #E5DACE59, inset 50px, bottom 90px */
+.zoomDivider {
+  pointer-events: none;
+  position: absolute;
+  left: 50px;
+  right: 50px;
+  bottom: 90px;
+  z-index: 4;
+  height: 1px;
+  background: #e5dace59;
+  transform-origin: center bottom;
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+.pager {
+  pointer-events: none;
+  position: absolute;
+  right: var(--pager-right);
+  bottom: var(--pager-bottom);
+  z-index: 5;
+  display: flex;
+  width: 60px;
+  height: 60px;
+  align-items: center;
+  justify-content: center;
+}
+
+.pagerSvg {
+  position: absolute;
+  inset: 0;
+  width: 60px;
+  height: 60px;
+  overflow: visible;
+}
+
+.pagerRing {
+  fill: none;
+  stroke: #e5dace;
+  stroke-width: 0.5;
+}
+
+.pagerProgress {
+  transform-origin: 30px 30px;
+  will-change: transform;
+}
+
+/* Figma 27:28 — Salina Trial Book 25px @ left 13 / top 13 inside 60×60
+   (circle SVG untouched) */
+.pagerText {
+  position: absolute;
+  left: 12px;
+  top: 19px;
+  z-index: 10;
+  display: flex;
+  align-items: baseline;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-salina);
+  font-weight: 400;
+  font-style: normal;
+  font-size: 25px;
+  line-height: 1;
+  letter-spacing: 0;
+  color: #e5dace;
+  white-space: nowrap;
+  text-box-trim: trim-both;
+  text-box-edge: cap alphabetic;
+}
+
+.pagerNum {
+  display: inline-block;
+}
+
+.pagerSlash {
+  display: inline-block;
+  margin-inline: 0.01em;
+  font-weight: 400;
+  transform: scaleY(1.12);
+  transform-origin: center;
+}
