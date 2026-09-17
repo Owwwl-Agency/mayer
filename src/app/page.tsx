@@ -1,9 +1,11 @@
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
+import { PRELOAD_ASSETS } from "@/components/HeroSection/hero-images";
+import PreloadGate from "@/components/PreloadGate";
 
 export default function Home() {
   return (
-    <>
+    <PreloadGate urls={PRELOAD_ASSETS}>
       <Header />
       <div className="min-h-screen bg-[#F4F2F1]">
         <main>
@@ -15,6 +17,6 @@ export default function Home() {
           </section>
         </main>
       </div>
-    </>
+    </PreloadGate>
   );
 }

@@ -15,6 +15,12 @@ export const HERO_IMAGES = {
   rect637: withBase("/hero-section/04606df5123b40c8751779f6ed8c69aec4c3f461.webp"),
 } as const;
 
+/** All hero assets to wait for before revealing the page */
+export const PRELOAD_ASSETS = [
+  ...Object.values(HERO_IMAGES),
+  withBase("/logo.svg"),
+] as const;
+
 export const SLIDER_IMAGES = [
   HERO_IMAGES.center,
   HERO_IMAGES.rect638,

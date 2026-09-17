@@ -1,0 +1,32 @@
+.content {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  opacity: 0;
+  transition: opacity 0.55s ease;
+}
+
+.content[data-ready="true"] {
+  opacity: 1;
+}
+
+.gate {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #ffffff;
+  pointer-events: auto;
+  opacity: 1;
+  transition: opacity 0.55s ease;
+}
+
+.gateOut {
+  opacity: 0;
+  pointer-events: none;
+}
+
+:global(html.assets-loading),
+:global(html.assets-loading body) {
+  overflow: hidden;
+  overflow-x: hidden;
+}

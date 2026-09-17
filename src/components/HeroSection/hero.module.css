@@ -1,6 +1,7 @@
 .section {
   position: relative;
   height: 480vh;
+  overflow-x: clip;
   background: #f4f2f1;
 }
 

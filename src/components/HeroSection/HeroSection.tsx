@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { HEADER_HEIGHT } from "@/components/Header";
+import { useAssetsReady } from "@/components/PreloadGate";
 import {
   CENTER_FRAME,
   CENTER_ZOOM,
@@ -89,6 +90,7 @@ export default function HeroSection() {
   const [activeSlide, setActiveSlide] = useState(0);
   const activeSlideRef = useRef(0);
   const isSlidingRef = useRef(false);
+  const assetsReady = useAssetsReady();
 
   const goToSlide = (index: number, animate = true, onDone?: () => void) => {
     const slides = slideRefs.current;
@@ -189,10 +191,13 @@ export default function HeroSection() {
   };
 
   useEffect(() => {
-    const progress = progressRef.current;
-    if (!progress) return;
-
     goToSlide(0, false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    const progress = progressRef.current;
+    if (!progress || !assetsReady) return;
 
     const spin = gsap.to(progress, {
       rotation: "+=360",
@@ -212,7 +217,7 @@ export default function HeroSection() {
       window.clearInterval(id);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [assetsReady]);
 
   useEffect(() => {
     const section = sectionRef.current;
