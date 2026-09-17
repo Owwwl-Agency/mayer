@@ -497,6 +497,14 @@
   );
 }
 
+.featureScrimSecond {
+  background: linear-gradient(
+    74.27deg,
+    rgba(32, 32, 32, 0.18) 0%,
+    rgba(240, 235, 232, 0) 56.72%
+  );
+}
+
 .featureCopy {
   position: absolute;
   left: 15px;

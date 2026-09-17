@@ -86,7 +86,13 @@ function CategoryArrow({ active }: { active: boolean }) {
   );
 }
 
-function FeatureCard({ card }: { card: MenuCard }) {
+function FeatureCard({
+  card,
+  variant = "first",
+}: {
+  card: MenuCard;
+  variant?: "first" | "second";
+}) {
   return (
     <Link href="#" className={styles.featureCard}>
       <div className={styles.featureMedia}>
@@ -97,7 +103,13 @@ function FeatureCard({ card }: { card: MenuCard }) {
           sizes="310px"
           className={styles.featureImage}
         />
-        <div className={styles.featureScrim} />
+        <div
+          className={
+            variant === "second"
+              ? `${styles.featureScrim} ${styles.featureScrimSecond}`
+              : styles.featureScrim
+          }
+        />
       </div>
       <div className={styles.featureCopy}>
         <p className={styles.featureTitle}>{card.title}</p>
@@ -324,8 +336,12 @@ export default function Header() {
             <div className={styles.megaDivider} aria-hidden />
 
             <div className={styles.megaCards} key={cardsKey}>
-              {previewCards.map((card) => (
-                <FeatureCard key={`${cardsKey}-${card.title}-${card.image}`} card={card} />
+              {previewCards.map((card, index) => (
+                <FeatureCard
+                  key={`${cardsKey}-${card.title}-${card.image}`}
+                  card={card}
+                  variant={index === 1 ? "second" : "first"}
+                />
               ))}
             </div>
           </div>
