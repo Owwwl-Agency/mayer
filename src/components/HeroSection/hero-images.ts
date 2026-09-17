@@ -6,13 +6,13 @@ export const DESIGN_W = 1440;
 export const DESIGN_H = 750;
 
 export const HERO_IMAGES = {
-  center: withBase("/hero-section/a3883001594f82540870a6bc0412fba03f0a4c33.png"),
-  rect633: withBase("/hero-section/e51cd084c290e274f02ce275901ce2bd24c3f821.png"),
-  rect634: withBase("/hero-section/f578429f15775fefbebff207f3a7ae4d27293055.png"),
-  rect639: withBase("/hero-section/64a8b3bf24cc872deeda2844244161c8610e18b6.png"),
-  rect638: withBase("/hero-section/63b4f2c9c876e7239955d6e29e2d7458728768eb.png"),
-  rect640: withBase("/hero-section/3f84cf35ab8714ab44846efc32f6c9309e15a252.png"),
-  rect637: withBase("/hero-section/04606df5123b40c8751779f6ed8c69aec4c3f461.png"),
+  center: withBase("/hero-section/a3883001594f82540870a6bc0412fba03f0a4c33.webp"),
+  rect633: withBase("/hero-section/e51cd084c290e274f02ce275901ce2bd24c3f821.webp"),
+  rect634: withBase("/hero-section/f578429f15775fefbebff207f3a7ae4d27293055.webp"),
+  rect639: withBase("/hero-section/64a8b3bf24cc872deeda2844244161c8610e18b6.webp"),
+  rect638: withBase("/hero-section/63b4f2c9c876e7239955d6e29e2d7458728768eb.webp"),
+  rect640: withBase("/hero-section/3f84cf35ab8714ab44846efc32f6c9309e15a252.webp"),
+  rect637: withBase("/hero-section/04606df5123b40c8751779f6ed8c69aec4c3f461.webp"),
 } as const;
 
 export const SLIDER_IMAGES = [

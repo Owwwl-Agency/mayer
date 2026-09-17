@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { withBase } from "@/lib/basePath";
 import styles from "./header.module.css";
 
 const NAV_ITEMS = [
@@ -57,7 +58,7 @@ export default function Header() {
           aria-label="Mayer Aesthetics Group"
         >
           <Image
-            src="/logo.svg"
+            src={withBase("/logo.svg")}
             alt="Mayer Aesthetics Group"
             width={87}
             height={61}
