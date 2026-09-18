@@ -292,7 +292,7 @@
   flex-shrink: 0;
   width: 1px;
   /* 70px total gap between column content (line centered in the gap) */
-  margin-inline: calc((70px - 1px) / 2);
+  margin-inline: 70px;
   align-self: stretch;
   background: #f4f2f10a;
 }

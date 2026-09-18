@@ -11,7 +11,7 @@ gsap.registerPlugin(ScrollTrigger);
 export default function SmoothScroll({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.15,
+      duration: 0.65,
       smoothWheel: true,
       touchMultiplier: 1.4,
       autoRaf: false,
