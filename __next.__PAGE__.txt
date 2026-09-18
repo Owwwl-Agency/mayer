@@ -1,0 +1,82 @@
+1:"$Sreact.fragment"
+2:I[10204,["/mayer/_next/static/chunks/3bl8qphvofkmt.js","/mayer/_next/static/chunks/0l1_0__bxoqkq.js","/mayer/_next/static/chunks/1-nt2f56sgx00.js"],"default"]
+3:I[16371,["/mayer/_next/static/chunks/3bl8qphvofkmt.js","/mayer/_next/static/chunks/0l1_0__bxoqkq.js","/mayer/_next/static/chunks/1-nt2f56sgx00.js"],"default"]
+4:I[2644,["/mayer/_next/static/chunks/3bl8qphvofkmt.js","/mayer/_next/static/chunks/0l1_0__bxoqkq.js","/mayer/_next/static/chunks/1-nt2f56sgx00.js"],"default"]
+5:I[97367,["/mayer/_next/static/chunks/3bl8qphvofkmt.js","/mayer/_next/static/chunks/0l1_0__bxoqkq.js"],"OutletBoundary"]
+6:"$Sreact.suspense"
+a:I[97367,["/mayer/_next/static/chunks/3bl8qphvofkmt.js","/mayer/_next/static/chunks/0l1_0__bxoqkq.js"],"ViewportBoundary"]
+b:I[97367,["/mayer/_next/static/chunks/3bl8qphvofkmt.js","/mayer/_next/static/chunks/0l1_0__bxoqkq.js"],"MetadataBoundary"]
+c:I[27201,["/mayer/_next/static/chunks/3bl8qphvofkmt.js","/mayer/_next/static/chunks/0l1_0__bxoqkq.js"],"IconMark"]
+:HL["/mayer/_next/static/chunks/2oaz_stgvew3v.css","style"]
+:HL["/mayer/_next/static/chunks/1iu0bxpova2zg.css","style"]
+9:X
+e:T624,@font-face {
+  font-family: "CoFo Sans Pro Hebrew Trial";
+  src: url("/mayer/fonts/CoFoSansProHebrewTrial-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "CoFo Sans Pro Hebrew Trial";
+  src: url("/mayer/fonts/CoFoSansProHebrewTrial-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "CoFo Sans Pro Hebrew Trial";
+  src: url("/mayer/fonts/CoFoSansProHebrewTrial-Book.otf") format("opentype");
+  font-weight: 450;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Moisette";
+  src: url("/mayer/fonts/Moisette-Italic.otf") format("opentype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Moisette";
+  src: url("/mayer/fonts/Moisette-Light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "CoFo Holz Trial";
+  src: url("/mayer/fonts/CoFoHolzTrial-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "CoFo Holz Trial";
+  src: url("/mayer/fonts/CoFoHolzTrial-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Salina Trial";
+  src:
+    url("/mayer/fonts/SalinaTrial-Book.woff2") format("woff2"),
+    url("/mayer/fonts/SalinaTrial-Book.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}0:{"buildId":"exgKbR_giHQh6U3u47585","data":[{"rsc":["$","$1","c",{"children":[["$","$L2",null,{"urls":["/mayer/hero-section/a3883001594f82540870a6bc0412fba03f0a4c33.webp","/mayer/hero-section/e51cd084c290e274f02ce275901ce2bd24c3f821.webp","/mayer/hero-section/f578429f15775fefbebff207f3a7ae4d27293055.webp","/mayer/hero-section/64a8b3bf24cc872deeda2844244161c8610e18b6.webp","/mayer/hero-section/63b4f2c9c876e7239955d6e29e2d7458728768eb.webp","/mayer/hero-section/3f84cf35ab8714ab44846efc32f6c9309e15a252.webp","/mayer/hero-section/04606df5123b40c8751779f6ed8c69aec4c3f461.webp","/mayer/hero-section/slider/slide-1.webp","/mayer/hero-section/slider/slide-2.webp","/mayer/hero-section/slider/slide-3.webp","/mayer/logo.svg"],"children":[["$","$L3",null,{}],["$","div",null,{"className":"min-h-screen bg-[#F4F2F1]","children":["$","main",null,{"children":[["$","$L4",null,{}],["$","section",null,{"className":"flex min-h-[40vh] items-center justify-center px-6 text-center text-[#5c534c]/70","children":["$","p",null,{"className":"max-w-md font-display text-2xl tracking-[-0.02em]","children":"COMING SOON"}]}]]}]}]]}],[["$","link","0",{"rel":"stylesheet","href":"/mayer/_next/static/chunks/2oaz_stgvew3v.css","precedence":"next"}],["$","script","script-0",{"src":"/mayer/_next/static/chunks/1-nt2f56sgx00.js","async":true}]],["$","$L5",null,{"children":["$","$6",null,{"name":"Next.MetadataOutlet","children":"$@7"}]}]]}],"isPartial":"$@8","staleTime":"$9","varyParams":null},{"rsc":["$","$1","h",{"children":[null,["$","$La",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","div",null,{"hidden":true,"children":["$","$Lb",null,{"children":["$","$6",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Mayer Aesthetics Group"}],["$","meta","1",{"name":"description","content":"Совершенство не придумывают. Его делают заметным."}],["$","link","2",{"rel":"icon","href":"/mayer/favicon.ico?favicon.2vob68tjqpejf.ico","sizes":"256x256","type":"image/x-icon"}],["$","$Lc","3",{}]]}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"isPartial":"$@d","staleTime":"$9","varyParams":null},{"rsc":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/mayer/_next/static/chunks/1iu0bxpova2zg.css","precedence":"next"}],["$","script","script-0",{"src":"/mayer/_next/static/chunks/3bl8qphvofkmt.js","async":true}],["$","script","script-1",{"src":"/mayer/_next/static/chunks/0l1_0__bxoqkq.js","async":true}]],["$","html",null,{"lang":"ru","className":"cormorant_garamond_fdbd20f0-module__KRRBra__variable manrope_4577f2ad-module__gn2z1W__variable h-full antialiased","children":["$","body",null,{"className":"min-h-full font-sans text-[#202020]","children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"$e"}}],"$Lf"]}]}]]}],"isPartial":"$@10","staleTime":"$9","varyParams":null}],"isUpgradeableISRFallback":false,"a":"$@11","rootVaryParams":null,"needsRuntimeRequest":"$@12"}
+13:I[81258,["/mayer/_next/static/chunks/3bl8qphvofkmt.js","/mayer/_next/static/chunks/0l1_0__bxoqkq.js"],"default"]
+14:I[39756,["/mayer/_next/static/chunks/3bl8qphvofkmt.js","/mayer/_next/static/chunks/0l1_0__bxoqkq.js"],"default"]
+15:I[37457,["/mayer/_next/static/chunks/3bl8qphvofkmt.js","/mayer/_next/static/chunks/0l1_0__bxoqkq.js"],"default"]
+7:null
+f:["$","$L13",null,{"children":["$","$L14",null,{"parallelRouterKey":"children","template":["$","$L15",null,{}],"notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]]}]}]
+9:300
+12:true
+9:C
+11:0
+d:"$undefined"
+10:"$undefined"
+8:"$undefined"

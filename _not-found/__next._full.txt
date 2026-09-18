@@ -1,0 +1,77 @@
+1:"$Sreact.fragment"
+3:I[81258,["/mayer/_next/static/chunks/3bl8qphvofkmt.js","/mayer/_next/static/chunks/0l1_0__bxoqkq.js"],"default"]
+4:I[39756,["/mayer/_next/static/chunks/3bl8qphvofkmt.js","/mayer/_next/static/chunks/0l1_0__bxoqkq.js"],"default"]
+5:I[37457,["/mayer/_next/static/chunks/3bl8qphvofkmt.js","/mayer/_next/static/chunks/0l1_0__bxoqkq.js"],"default"]
+9:I[68027,["/mayer/_next/static/chunks/3bl8qphvofkmt.js","/mayer/_next/static/chunks/0l1_0__bxoqkq.js"],"default",1]
+:HL["/mayer/_next/static/chunks/1iu0bxpova2zg.css","style"]
+2:T624,@font-face {
+  font-family: "CoFo Sans Pro Hebrew Trial";
+  src: url("/mayer/fonts/CoFoSansProHebrewTrial-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "CoFo Sans Pro Hebrew Trial";
+  src: url("/mayer/fonts/CoFoSansProHebrewTrial-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "CoFo Sans Pro Hebrew Trial";
+  src: url("/mayer/fonts/CoFoSansProHebrewTrial-Book.otf") format("opentype");
+  font-weight: 450;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Moisette";
+  src: url("/mayer/fonts/Moisette-Italic.otf") format("opentype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Moisette";
+  src: url("/mayer/fonts/Moisette-Light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "CoFo Holz Trial";
+  src: url("/mayer/fonts/CoFoHolzTrial-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "CoFo Holz Trial";
+  src: url("/mayer/fonts/CoFoHolzTrial-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Salina Trial";
+  src:
+    url("/mayer/fonts/SalinaTrial-Book.woff2") format("woff2"),
+    url("/mayer/fonts/SalinaTrial-Book.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}7:X
+0:{"P":null,"c":["","_not-found",""],"q":"","i":false,"f":[[["",{"children":["/_not-found",{"children":["__PAGE__",{},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4624],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/mayer/_next/static/chunks/1iu0bxpova2zg.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/mayer/_next/static/chunks/3bl8qphvofkmt.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/mayer/_next/static/chunks/0l1_0__bxoqkq.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"ru","className":"cormorant_garamond_fdbd20f0-module__KRRBra__variable manrope_4577f2ad-module__gn2z1W__variable h-full antialiased","children":["$","body",null,{"className":"min-h-full font-sans text-[#202020]","children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"$2"}}],["$","$L3",null,{"children":["$","$L4",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]]}]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L4",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["$L6",{},null,false,null]},null,false,"$7"]},null,false,null],"$L8",false]],"m":"$undefined","G":["$9",["$La"]],"S":true,"h":null,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"exgKbR_giHQh6U3u47585"}
+b:I[97367,["/mayer/_next/static/chunks/3bl8qphvofkmt.js","/mayer/_next/static/chunks/0l1_0__bxoqkq.js"],"OutletBoundary"]
+c:"$Sreact.suspense"
+e:I[97367,["/mayer/_next/static/chunks/3bl8qphvofkmt.js","/mayer/_next/static/chunks/0l1_0__bxoqkq.js"],"ViewportBoundary"]
+10:I[97367,["/mayer/_next/static/chunks/3bl8qphvofkmt.js","/mayer/_next/static/chunks/0l1_0__bxoqkq.js"],"MetadataBoundary"]
+6:["$","$1","c",{"children":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":"$0:f:0:1:0:props:children:1:props:children:props:children:1:props:children:props:notFound:0:1:props:style","children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":"$0:f:0:1:0:props:children:1:props:children:props:children:1:props:children:props:notFound:0:1:props:children:props:children:1:props:style","children":404}],["$","div",null,{"style":"$0:f:0:1:0:props:children:1:props:children:props:children:1:props:children:props:notFound:0:1:props:children:props:children:2:props:style","children":["$","h2",null,{"style":"$0:f:0:1:0:props:children:1:props:children:props:children:1:props:children:props:notFound:0:1:props:children:props:children:2:props:children:props:style","children":"This page could not be found."}]}]]}]}]],null,["$","$Lb",null,{"children":["$","$c",null,{"name":"Next.MetadataOutlet","children":"$@d"}]}]]}]
+8:["$","$1","h",{"children":[["$","meta",null,{"name":"robots","content":"noindex"}],["$","$Le",null,{"children":"$Lf"}],["$","div",null,{"hidden":true,"children":["$","$L10",null,{"children":["$","$c",null,{"name":"Next.Metadata","children":"$L11"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}]
+a:["$","link","0",{"rel":"stylesheet","href":"/mayer/_next/static/chunks/1iu0bxpova2zg.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]
+7:C
+f:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+12:I[27201,["/mayer/_next/static/chunks/3bl8qphvofkmt.js","/mayer/_next/static/chunks/0l1_0__bxoqkq.js"],"IconMark"]
+d:null
+11:[["$","title","0",{"children":"Mayer Aesthetics Group"}],["$","meta","1",{"name":"description","content":"Совершенство не придумывают. Его делают заметным."}],["$","link","2",{"rel":"icon","href":"/mayer/favicon.ico?favicon.2vob68tjqpejf.ico","sizes":"256x256","type":"image/x-icon"}],["$","$L12","3",{}]]

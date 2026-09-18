@@ -1,0 +1,13 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="41" height="41" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Group 2268">
+<foreignObject x="0" y="0" width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(15px);clip-path:url(#bgblur_0_0_22_clip_path);height:100%;width:100%"></div></foreignObject><rect id="Rectangle 7" data-figma-bg-blur-radius="30" x="0.5" y="0.5" width="40" height="40" rx="2.5" stroke="#B6AB9E"/>
+<foreignObject x="-29" y="-29" width="99" height="99"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(15px);clip-path:url(#bgblur_1_0_22_clip_path);height:100%;width:100%"></div></foreignObject><rect id="Rectangle 8" data-figma-bg-blur-radius="30" x="1.5" y="1.5" width="38" height="38" rx="1.5" stroke="#E5DACE"/>
+<foreignObject x="-28" y="-28" width="97" height="97"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(15px);clip-path:url(#bgblur_2_0_22_clip_path);height:100%;width:100%"></div></foreignObject><rect id="Rectangle 9" data-figma-bg-blur-radius="30" x="2" y="2" width="37" height="37" rx="1" fill="#6A5F59"/>
+<path id="Vector" fill-rule="evenodd" clip-rule="evenodd" d="M14 20.5C14 20.206 14.2494 19.9677 14.5571 19.9677L26.4426 19.9677C26.7503 19.9677 26.9997 20.206 26.9997 20.5C26.9997 20.794 26.7503 21.0323 26.4426 21.0323H14.5571C14.2494 21.0323 14 20.794 14 20.5ZM16.4389 25.4677C16.4389 25.1738 16.6883 24.9355 16.996 24.9355L26.4429 24.9355C26.7506 24.9355 27 25.1738 27 25.4677C27 25.7617 26.7506 26 26.4429 26L16.996 26C16.6883 26 16.4389 25.7617 16.4389 25.4677ZM20.6648 15.5323C20.6648 15.2383 20.9143 15 21.222 15L26.4429 15C26.7506 15 27 15.2383 27 15.5323C27 15.8262 26.7506 16.0645 26.4429 16.0645L21.222 16.0645C20.9143 16.0645 20.6648 15.8262 20.6648 15.5323Z" fill="#F4F2F1" stroke="#F4F2F1" stroke-width="0.3" stroke-linecap="round"/>
+</g>
+<defs>
+<clipPath id="bgblur_0_0_22_clip_path" transform="translate(0 0)"><rect x="0.5" y="0.5" width="40" height="40" rx="2.5"/>
+</clipPath><clipPath id="bgblur_1_0_22_clip_path" transform="translate(29 29)"><rect x="1.5" y="1.5" width="38" height="38" rx="1.5"/>
+</clipPath><clipPath id="bgblur_2_0_22_clip_path" transform="translate(28 28)"><rect x="2" y="2" width="37" height="37" rx="1"/>
+</clipPath></defs>
+</svg>
